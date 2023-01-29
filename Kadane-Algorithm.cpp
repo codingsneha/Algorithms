@@ -1,9 +1,42 @@
-long long maxSubarraySum(int a[], int n){
-        long long int m = INT_MIN, e = 0;
-        for (int i = 0; i < n; i++) {
-            e = e + a[i];
-            if (m < e) m = e;
-            if (e < 0) e = 0;
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// } Driver Code Ends
+//User function template for C++
+class Solution{
+public:
+
+	// Function to find maximum product subarray
+	long long maxProduct(vector<int> arr, int n) {
+	    long long int m = arr[0], maxi = m, mini = m;
+	    for (int i = 1; i < n; i++) {
+	        if (arr[i] < 0) swap(maxi, mini);
+            maxi = max(arr[i] * 1ll, arr[i] * maxi);
+            mini = min(arr[i] * 1ll, arr[i]*mini);
+            m = max(maxi, m);
+	    }
+	    return m;
+	}
+};
+
+//{ Driver Code Starts.
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n, i;
+        cin >> n;
+        vector<int> arr(n);
+        for (i = 0; i < n; i++) {
+            cin >> arr[i];
         }
-        return m;
+        Solution ob;
+        auto ans = ob.maxProduct(arr, n);
+        cout << ans << "\n";
+    }
+    return 0;
 }
+// } Driver Code Ends
