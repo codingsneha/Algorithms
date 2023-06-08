@@ -7,9 +7,6 @@ def insertionSort(a):
             i = i - 1
         a[i + 1] = key
 
-def printArray(a):
-    for i in range(0, len(a)):
-        print(a[i])
 
 arr = [2, 4, 7, 1, 3, 19, 8]
 insertionSort(arr)
